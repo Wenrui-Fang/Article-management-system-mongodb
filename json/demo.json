@@ -1,4 +1,5 @@
-[{
+[
+  {
     "articleId": "1",
     "title": "5 Tips to Get a Job as a Java Fresher",
     "content": "Java is one of the most robust programming languages which is currently used for development in 3 billion devices. This language offers amazing features like platform independence, object-oriented programming, enhanced security features, automatic garbage collection, and many more. The latest technological trends of 2021 completely manifest that Java will continue to behold its dominance in the upcoming future. The rise of Java is linked with the growth of job opportunities for",
@@ -7,21 +8,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-}, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "2",
     "title": "5 Tips to Get a Job as a Python Fresher",
     "content": "Python is one of the most robust programming languages which is currently used for development in 3 billion devices. This language offers amazing features like platform independence, object-oriented programming, enhanced security features, automatic garbage collection, and many more. The latest technological trends of 2021 completely manifest that Java will continue to behold its dominance in the upcoming future. The rise of Java is linked with the growth of job opportunities for",
@@ -30,21 +41,31 @@
     "status": "draft",
     "isDelete": false,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-}, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "3",
     "title": "Quimm",
     "content": "Chihuahuan Waterclover",
@@ -53,21 +74,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "4",
     "title": "Wordpedia",
     "content": "Narrowleaf Clubmoss",
@@ -76,21 +107,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "5",
     "title": "Devpoint",
     "content": "Desert Pepperweed",
@@ -99,21 +140,31 @@
     "status": "draft",
     "isDelete": false,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "6",
     "title": "Layo",
     "content": "Beach Starwort",
@@ -122,21 +173,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "7",
     "title": "Dabshots",
     "content": "Rand's Goldenrod",
@@ -145,21 +206,31 @@
     "status": "draft",
     "isDelete": true,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"3",
-        "name":"chemistry",
+    "category": [
+      {
+        "cateId": "3",
+        "name": "chemistry",
         "alias": "huaxue",
-        "isDelete" : "false",
-        "userId":"3"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "3",
+          "userName": "ccc",
+          "password": "123456",
+          "nickName": "CCC",
+          "email": "ccc@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "8",
     "title": "Devpoint",
     "content": "Ninebark",
@@ -168,21 +239,31 @@
     "status": "published",
     "isDelete": true,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"3",
-        "name":"chemistry",
+    "category": [
+      {
+        "cateId": "3",
+        "name": "chemistry",
         "alias": "huaxue",
-        "isDelete" : "false",
-        "userId":"3"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "3",
+          "userName": "ccc",
+          "password": "123456",
+          "nickName": "CCC",
+          "email": "ccc@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "9",
     "title": "Cogidoo",
     "content": "Little Evening Primrose",
@@ -191,21 +272,31 @@
     "status": "published",
     "isDelete": true,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "10",
     "title": "Roodel",
     "content": "Olive Clover",
@@ -214,21 +305,31 @@
     "status": "draft",
     "isDelete": true,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "11",
     "title": "Brainverse",
     "content": "Pinemat",
@@ -237,21 +338,31 @@
     "status": "draft",
     "isDelete": false,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "12",
     "title": "Edgetag",
     "content": "Smooth Solomon's Seal",
@@ -260,21 +371,31 @@
     "status": "draft",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "13",
     "title": "Kazio",
     "content": "Short-lobe Indian Paintbrush",
@@ -283,21 +404,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "14",
     "title": "Realfire",
     "content": "Palmyra Palm",
@@ -306,21 +437,31 @@
     "status": "published",
     "isDelete": true,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"3",
-        "name":"chemistry",
+    "category": [
+      {
+        "cateId": "3",
+        "name": "chemistry",
         "alias": "huaxue",
-        "isDelete" : "false",
-        "userId":"3"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "3",
+          "userName": "ccc",
+          "password": "123456",
+          "nickName": "CCC",
+          "email": "ccc@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "15",
     "title": "Voonyx",
     "content": "Huachuca Mountain Rocktrumpet",
@@ -329,21 +470,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "16",
     "title": "Twitterbeat",
     "content": "Snow Grass",
@@ -352,21 +503,31 @@
     "status": "published",
     "isDelete": true,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "17",
     "title": "Oyoloo",
     "content": "Whited's Milkvetch",
@@ -375,21 +536,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"1",
-        "name":"computer",
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
         "alias": "cs",
-        "isDelete" : "false",
-        "userId":"1"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "18",
     "title": "Ailane",
     "content": "Common Houseleek",
@@ -398,21 +569,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "2",
-        "userName": "bbb",
-        "password": "123456",
-        "nickName": "BBB",
-        "email":"bbb@gmail.com",
-        "userPicture": null
+      "userId": "2",
+      "userName": "bbb",
+      "password": "123456",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "19",
     "title": "Twimbo",
     "content": "Rimmed Lichen",
@@ -421,21 +602,31 @@
     "status": "published",
     "isDelete": false,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "20",
     "title": "Buzzshare",
     "content": "Pygmy Bentspur Orchid",
@@ -444,21 +635,31 @@
     "status": "draft",
     "isDelete": false,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"2",
-        "name":"mechanics",
+    "category": [
+      {
+        "cateId": "2",
+        "name": "mechanics",
         "alias": "me",
-        "isDelete" : "false",
-        "userId":"2"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "2",
+          "userName": "bbb",
+          "password": "123456",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "21",
     "title": "Tazz",
     "content": "Milktree",
@@ -467,21 +668,31 @@
     "status": "draft",
     "isDelete": true,
     "user": {
-        "userId": "3",
-        "userName": "ccc",
-        "password": "123456",
-        "nickName": "CCC",
-        "email":"ccc@gmail.com",
-        "userPicture": null
+      "userId": "3",
+      "userName": "ccc",
+      "password": "123456",
+      "nickName": "CCC",
+      "email": "ccc@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"3",
-        "name":"chemistry",
+    "category": [
+      {
+        "cateId": "3",
+        "name": "chemistry",
         "alias": "huaxue",
-        "isDelete" : "false",
-        "userId":"3"
-    }]
-  }, {
+        "isDelete": "false",
+        "user": {
+          "userId": "3",
+          "userName": "ccc",
+          "password": "123456",
+          "nickName": "CCC",
+          "email": "ccc@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  },
+  {
     "articleId": "22",
     "title": "Realcube",
     "content": "Bearded Skeletongrass",
@@ -490,18 +701,28 @@
     "status": "published",
     "isDelete": true,
     "user": {
-        "userId": "1",
-        "userName": "aaa",
-        "password": "123456",
-        "nickName": "AAA",
-        "email":"aaa@gmail.com",
-        "userPicture": null
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
     },
-    "category": [{
-        "cateId":"3",
-        "name":"chemistry",
+    "category": [
+      {
+        "cateId": "3",
+        "name": "chemistry",
         "alias": "huaxue",
-        "isDelete" : "false",
-        "userId":"3"
-    }]
-  }]
+        "isDelete": "false",
+        "user": {
+          "userId": "3",
+          "userName": "ccc",
+          "password": "123456",
+          "nickName": "CCC",
+          "email": "ccc@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  }
+]
