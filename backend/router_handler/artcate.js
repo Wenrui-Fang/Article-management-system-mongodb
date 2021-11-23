@@ -1,96 +1,179 @@
-const db = require('../db/index')
-
+const uuid = require("uuid");
+var MongoClient = require("mongodb").MongoClient;
+var url = "mongodb://localhost:27017/";
 
 // Get the processing function of the article classification list data
 exports.getArticleCates = (req, res) => {
-    const sql = 'select * from ArticleCate where isDelete=0 order by cateId asc'
-    db.all(sql, (err, results) => {
-        // 1. Failed to execute SQL statement
-        if (err) return res.cc(err)
-        // 2. SQL statement executed successfully
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var query = {
+      isDelete: false,
+    };
+    dbo
+      .collection("category")
+      .find(query)
+      .toArray(function (err, results) {
+        if (err) throw err;
         res.send({
-            status: 0,
-            message: 'Get the article category list successfully!',
-            data: results,
-        })
-    })
-}
+          status: 0,
+          message: "Get the article category list successfully!",
+          data: results,
+        });
+        db.close();
+      });
+  });
+};
 
 // Added processing function for article classification
 exports.addArticleCates = (req, res) => {
-    // 1. Define the SQL statement for duplicate checking
-    const sql = `select * from ArticleCate where name=? or alias=?`
-    // 2. SQL statement to perform duplication check
-    db.all(sql, [req.body.name, req.body.alias], (err, results) => {
-        // 3. Determine whether the execution of the SQL statement fails
-        if (err) return res.cc(err)
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    // duplicate checking
+    var query = {
+      $or: [{ name: req.body.name }, { alias: req.body.alias }],
+    };
+    dbo
+      .collection("category")
+      .find(query)
+      .toArray(function (err, results) {
+        if (err) throw err;
+        // Determine the length of the data
+        if (results.length === 2)
+          return res.cc(
+            "The category name and category alias are occupied, please change and try again!"
+          );
+        // Three cases where length is equal to 1
+        if (
+          results.length === 1 &&
+          results[0].name === req.body.name &&
+          results[0].alias === req.body.alias
+        )
+          return res.cc(
+            "The category name and category alias are occupied, please change and try again!"
+          );
+        if (results.length === 1 && results[0].name === req.body.name)
+          return res.cc(
+            "The category name is occupied, please change and try again!"
+          );
+        if (results.length === 1 && results[0].alias === req.body.alias)
+          return res.cc(
+            "The category alias is occupied, please change and try again!"
+          );
 
-        // 4.1 Determine the length of the data
-        if (results.length === 2) return res.cc('The category name and category alias are occupied, please change and try again!')
-        // 4.2 Three cases where length is equal to 1
-        if (results.length === 1 && results[0].name === req.body.name && results[0].alias === req.body.alias) return res.cc('The category name and category alias are occupied, please change and try again!')
-        if (results.length === 1 && results[0].name === req.body.name) return res.cc('The category name is occupied, please change and try again!')
-        if (results.length === 1 && results[0].alias === req.body.alias) return res.cc('The category alias is occupied, please change and try again!')
+        var document = {
+          cateId: uuid.v4(),
+          name: req.body.name,
+          alias: req.body.alias,
+          isDelete: false,
+          userId: req.user.userId,
+        };
+        dbo.collection("category").insertOne(document, function (err, results) {
+          if (err) return res.cc(err);
+          res.cc("The newly added article is classified successfully!", 0);
+          db.close();
+        });
+      });
+  });
+};
 
-        // Define the SQL statement to insert the article category
-        const sql = `insert into ArticleCate(name, alias) values(?,?)`
-        // Execute the SQL statement that inserts the article category
-        db.run(sql, [req.body.name, req.body.alias], (err, results) => {
-            if (err) return res.cc(err)
-            res.cc('The newly added article is classified successfully!', 0)
-        })
-    })
-
-}
-
-// 删除文章分类的处理函数
+// Processing function of deleting article classification
 exports.deleteCateById = (req, res) => {
-    // 定义标记删除的 SQL 语句
-    const sql = `update ArticleCate set isDelete=1 where cateId=?`
-    // 调用 db.query() 执行 SQL 语句
-    db.run(sql, req.params.id, (err, results) => {
-        if (err) return res.cc(err)
-        res.cc('Delete the article category successfully!', 0)
-    })
-}
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var query = { cateId: req.params.id };
+    // console.log(typeof(req.params.id));
+    // console.log(typeof(cateId));
+    var update = { $set: { isDelete: true } };
+    dbo
+      .collection("category")
+      .updateOne(query, update, function (err, results) {
+        if (err) throw err;
+        res.cc("Delete the article category successfully!", 0);
+        db.close();
+      });
+  });
+};
 
-// 根据 Id 获取文章分类的处理函数
+// Processing function of getting article category by id
 exports.getArticleById = (req, res) => {
-    // 定义根据 ID 获取文章分类数据的 SQL 语句
-    const sql = `select * from ArticleCate where cateId=?`
-    // 调用 db.query() 执行 SQL 语句
-    db.all(sql, req.params.id, (err, results) => {
-        if (err) return res.cc(err)
-        if (results.length !== 1) return res.cc('Failed to get article classification data!')
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var query = {
+      cateId: req.params.id,
+    };
+    dbo
+      .collection("category")
+      .find(query)
+      .toArray(function (err, results) {
+        if (err) throw err;
+        if (results.length !== 1)
+          return res.cc("Failed to get article classification data!");
         res.send({
-            status: 0,
-            message: 'Get the article classification data successfully!',
-            data: results[0],
-        })
-    })
-}
+          status: 0,
+          message: "Get the article classification data successfully!",
+          data: results[0],
+        });
+        db.close();
+      });
+  });
+};
 
 // Update the processing function of the article classification
 exports.updateCateById = (req, res) => {
-    // Define the SQL statement for duplicate checking
-    const sql = `select * from ArticleCate where cateId<>? and (name=? or alias=?)`
-    // Call db.query() to execute the SQL statement for duplicate check
-    db.all(sql, [req.body.cateId, req.body.name, req.body.alias], (err, results) => {
-        // Failed to execute SQL statement
-        if (err) return res.cc(err)
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var query = {
+      cateId: {$ne :req.body.cateId},
+      $or: [{name: req.body.name}, {alias: req.body.alias}]
+    };
+    dbo
+      .collection("category")
+      .find(query)
+      .toArray(function (err, results) {
+        if (err) throw err;
 
         // 4 situations in which names and aliases are occupied
-        if (results.length === 2) return res.cc('The category name and alias are occupied, please change and try again!')
-        if (results.length === 1 && results[0].name === req.body.name && results[0].alias === req.body.alias) return res.cc('分类名称与别名被占用，请更换后重试！')
-        if (results.length === 1 && results[0].name === req.body.name) return res.cc('The category name is occupied, please change and try again!')
-        if (results.length === 1 && results[0].alias === req.body.alias) return res.cc('The category alias is occupied, please change and try again!')
-        // Define the SQL statement to update the article classification
-        const sql = `update ArticleCate set cateId=?,name=?,alias=? where cateId=?`
+        if (results.length === 2)
+          return res.cc(
+            "The category name and alias are occupied, please change and try again!"
+          );
+        if (
+          results.length === 1 &&
+          results[0].name === req.body.name &&
+          results[0].alias === req.body.alias
+        )
+          return res.cc(
+            "The category name and category alias are occupied, please change and try again!"
+          );
+        if (results.length === 1 && results[0].name === req.body.name)
+          return res.cc(
+            "The category name is occupied, please change and try again!"
+          );
+        if (results.length === 1 && results[0].alias === req.body.alias)
+          return res.cc(
+            "The category alias is occupied, please change and try again!"
+          );
 
-        // Execute the SQL statement to update the article classification
-        db.run(sql, [req.body.cateId, req.body.name, req.body.alias, req.body.cateId], (err, results) => {
-            if (err) return res.cc(err)
-            res.cc('Successfully updated the article classification!', 0)
-        })
-    })
-}
+        var query2 = { cateId: req.body.cateId };
+        var update = {
+          $set: {
+            cateId: req.body.cateId,
+            name: req.body.name,
+            alias: req.body.alias,
+          },
+        };
+        dbo
+          .collection("category")
+          .updateOne(query2, update, function (err, results) {
+            if (err) return res.cc(err);
+            res.cc("Successfully updated the article classification!", 0);
+            db.close();
+          });
+      });
+  });
+};

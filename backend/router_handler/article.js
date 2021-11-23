@@ -1,94 +1,109 @@
 // Import the path core module of the processing path
-const path = require('path')
-const db = require('../db/index')
+const path = require("path");
+// const db = require('../db/index')
+const uuid = require("uuid");
+var MongoClient = require("mongodb").MongoClient;
+var url = "mongodb://localhost:27017/";
 
 // Processing function for publishing new articles
 exports.addArticle = (req, res) => {
-    // Manually determine whether the article cover is uploaded
-    if (!req.file || req.file.fieldname !== 'coverImg') return res.cc('文章封面是必选参数！')
+  // Manually determine whether the article cover is uploaded
+  if (!req.file || req.file.fieldname !== "coverImg")
+    return res.cc("Image cover is required!");
 
-    const articleInfo = {
-        // Title, content, status, category Id to which it belongs
-        ...req.body,
-        // The storage path of the article cover on the server side
-        coverImg: path.join('/uploads', req.file.filename),
-        // Article publication time
-        pubDate: new Date(),
-        // Id of the author of the article
-        userId: req.user.userId,
-    }
+  const articleInfo = {
+    // Title, content, status, category Id to which it belongs
+    ...req.body,
+    // The storage path of the article cover on the server side
+    coverImg: path.join("/uploads", req.file.filename),
+    // Article publication time
+    pubDate: new Date(),
+    // Id of the author of the article
+    userId: req.user.userId,
+  };
 
-    console.log(articleInfo)
+  console.log(articleInfo);
 
-    var sql = `insert into Articles(title, content,coverImg,pubDate,status,userId) values(?,?,?,?,?,?)`
-
-    // Execute SQL statement
-    db.run(sql, [
-        articleInfo.title,
-        articleInfo.content,
-        articleInfo.coverImg,
-        articleInfo.pubDate,
-        articleInfo.state,
-        articleInfo.userId
-    ], (err, results) => {
-        // Failed to execute SQL statement
-        if (err) return res.cc(err)
-    })
-    sql = 'select last_insert_rowid() as id'
-    db.all(sql, (err, results) => {
-        // Failed to execute SQL statement
-        if (err) return res.cc(err)
-        console.log(results)
-        sql = 'insert into Belong(cateId,articleId) values(?,?)'
-        db.run(sql, [articleInfo.cateId, results[0].id], (err) => {
-            // Failed to execute SQL statement
-            if (err) return res.cc(err)
-            // Published the article successfully
-            res.cc('Published the article successfully', 0)
-        })
-
-    })
-
-}
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var document = {
+      articleId: uuid.v4(),
+      title: articleInfo.title,
+      content: articleInfo.content,
+      coverImg: articleInfo.coverImg,
+      pubDate: articleInfo.pubDate,
+      status: articleInfo.state,
+      isDelete: false,
+      userId: articleInfo.userId,
+      catedId: articleInfo.catedId,
+    };
+    // console.log(req);
+    dbo.collection("article").insertOne(document, function (err, results) {
+      if (err) throw err;
+      db.close();
+    });
+  });
+};
 
 // Get the processing function of the article list data
 exports.getArticleLists = (req, res) => {
-    console.log(req.query)
-    var sql = 'select * from Articles ar,Belong be, ArticleCate arc where ar.articleId = Be.articleId and arc.cateId = Be.cateId and (ar.isDelete = 0 or ar.isDelete =\'FALSE\')order by articleId asc'
-    if (req.query.cate_id === '') {
-        db.all(sql, (err, results) => {
-            // 1. Failed to execute SQL statement
-            if (err) return res.cc(err)
-            // 2. SQL statement executed successfully
-            res.send({
-                status: 0,
-                message: 'Get the article list successfully!',
-                data: results,
-            })
-        })
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    if (req.query.cate_id === "") {
+      var query1 = {
+        isDelete: false,
+      };
+      dbo
+        .collection("article")
+        .find(query1)
+        .toArray(function (err, results) {
+          if (err) throw err;
+          res.send({
+            status: 0,
+            message: "Get the article list successfully!",
+            data: results,
+          });
+        //   console.log(results);
+          db.close();
+        });
     } else {
-        sql = 'select * from Articles ar,Belong be, ArticleCate arc where ar.articleId = Be.articleId and arc.cateId = Be.cateId and (ar.isDelete = 0 or ar.isDelete =\'FALSE\') and arc.cateId=? order by ar.articleId asc'
-        db.all(sql, req.query.cate_id, (err, results) => {
-            // 1. Failed to execute SQL statement
-            if (err) return res.cc(err)
-            // 2. SQL statement executed successfully
-            res.send({
-                status: 0,
-                message: 'Get the article list successfully!',
-                data: results,
-            })
-        })
+      var query2 = {
+        isDelete: false,
+        cateId: req.query.cate_id,
+      };
+      dbo
+        .collection("article")
+        .find(query2)
+        .toArray(function (err, results) {
+          if (err) throw err;
+          res.send({
+            status: 0,
+            message: "Get the article list successfully!",
+            data: results,
+          });
+        //   console.log(results);
+
+          db.close();
+        });
     }
-}
+  });
+};
 
 // Delete the processing function of the article category
 exports.deleteArticleById = (req, res) => {
-    // Define the SQL statement for mark deletion
-    const sql = `update Articles set isDelete=1 where articleId=?`
-    // Call db.query() to execute SQL statement
-    db.run(sql, req.params.id, (err, results) => {
-        if (err) return res.cc(err)
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("articleSystem");
+    var query = { articleId: req.params.id };
+    var update = { $set: { isDelete: true } };
+    dbo
+      .collection("article")
+      .updateOne(query, update, function (err, results) {
+        if (err) throw err;
         res.cc('The article was deleted successfully!', 0)
-    })
-}
-
+        db.close();
+      });
+  });
+};

@@ -5,7 +5,7 @@ const name = joi.string().required()
 const alias = joi.string().alphanum().required()
 
 // Define the verification rules for category Id
-const id = joi.number().integer().min(0).required()
+const id = joi.string().required()
 
 
 // Validation rule object-add classification
