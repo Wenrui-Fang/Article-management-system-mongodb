@@ -16,7 +16,7 @@ const password = joi
   .required();
 
 // Define verification rules for id, nickname, emial
-const userId = joi.number().integer().min(1).required();
+const userId = joi.string().required();
 const nickName = joi.string().required();
 const email = joi.string().email().required();
 
