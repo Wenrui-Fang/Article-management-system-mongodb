@@ -3,11 +3,15 @@
 # Article management system
 
 Jinxin Hu:
+
 	Completed the sign-up and log-in part;
+	
 	Completed other auxiliary functions like getting user basic information and updating password;
 
 Wenrui Fang:
+
 	Wrote the page of homepage part;
+	
 	Wrote the code of article category, article list and article deleting parts;
 	
 The diagram on the homepage is not the content of this project. It is just a sample display.
