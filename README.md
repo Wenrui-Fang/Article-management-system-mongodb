@@ -13,7 +13,7 @@ Wenrui Fang:
 	Wrote the page of homepage part;
 	
 	Wrote the code of article category, article list and article deleting parts;
-	
+
 The diagram on the homepage is not the content of this project. It is just a sample display.
 
 ## User Story
@@ -62,160 +62,188 @@ The article category needs to have an alias
 
 ## Logical Data Model
 
-### ER Diagram
+![2](./picture/2.png)
 
-https://www.edrawmax.cn/online/share.html?code=b80d0af6362911ec90b29d87e1af6f2f
+### Main Collections 
 
-![uml_project1](./picture/er_project01.png)
+### Table 1:article(article only table)
 
-### Relational Schema
+"articleId": Article Id.
 
-Users (**<u>userId</u>**, userName, nickName, email, userPicture);
+"title":  Article title.
 
-ArticleCate (**<u>cateId</u>**, name, alias, isDelete, <u>userId</u>)
+ "content":  Article content.
 
-Articles (**<u>articleId</u>**, title, content, coverImg, pubDate, status, isDelete, <u>userId</u>, <u>cateId</u>)
+ "coverImg": Image which user want to set up.
 
-Belong (**<u>belongId</u>**, <u>cateId</u>, <u>articleId</u>)
+ "pubDate": Article publication time
 
-(Notes: PK = **<u>PK</u>**; FK = <u>FK</u>)
+  "status":  Indicates whether the article is published or not
 
-### BCNF Proof
+  "isDelete": The status of the article, whether it has been deleted
 
-Each column of our database table is an indivisible basic data item, so it satisfies the first paradigm of BCNF.
+  "userId": User Id
 
-There is no partial functional dependence of non-key fields on any candidate key in the database table, that is, all non-key fields are completely dependent on any set of candidate keys.
+  "cateId":  Category id
 
-(userId) -> (userName, password, nickName, email, userPicture)
+**Example:** 
 
-(cateId) -> (name, alias,isDelete. (FK) userId: NUMBER)
+```json
+{
+      "articleId": "1",
+      "title": "5 Tips to Get a Job as a Java Fresher",
+      "content": "Java is one of the most robust programming languages which is currently used for development in 3 billion devices. This language offers amazing features like platform independence, object-oriented programming, enhanced security features, automatic garbage collection, and many more. The latest technological trends of 2021 completely manifest that Java will continue to behold its dominance in the upcoming future. The rise of Java is linked with the growth of job opportunities for",
+      "coverImg": null,
+      "pubDate": "02/25/2019",
+      "status": "published",
+      "isDelete": false,
+      "userId": "1",
+      "cateId": "1"
+    }
+```
 
-(articleId) -> (title, content, coverImg, pubDate, status, isDelete, (FK) userId)
+### Table 2: user (user only table)
 
-In our data table, there is no transfer function dependence of non-key fields on any candidate key field, which conforms to the third normal form.
+"userId":  User id.
 
-Within the scope of functional dependency, our data table has been completely separated, and the exception of insertion and deletion has been eliminated.
+"userName":  Username for user.
 
+"password":  Encrypted password.
 
+"nickName":  Nick name for user.
 
-## Physical Model
+"email":  Email which user set up.
 
-### Create database with SQLite
+"userPicture":  Profile picture.
 
-```sqlite
---This table is for article category.
-CREATE TABLE ArticleCate (
-cateId INTEGER PRIMARY KEY ON CONFLICT ROLLBACK AUTOINCREMENT
-NOT NULL
-UNIQUE,
-name TEXT UNIQUE ON CONFLICT ROLLBACK
-NOT NULL,
-alias TEXT UNIQUE ON CONFLICT ROLLBACK
-NOT NULL,
-isDelete BOOLEAN NOT NULL
-DEFAULT (0),
-userId REFERENCES Users (userId)
-NOT NULL
-);
+**Example:**
 
---This table is for saving articles detail information.
-CREATE TABLE Articles (
-articleId INTEGER PRIMARY KEY AUTOINCREMENT
-UNIQUE
-NOT NULL,
-title TEXT NOT NULL,
-content TEXT NOT NULL,
-coverImg TEXT,
-pubDate DATETIME NOT NULL,
-status TEXT NOT NULL,
-isDelete BOOLEAN NOT NULL
-DEFAULT (0),
-userId INTEGER REFERENCES Users (userId)
-NOT NULL
-);
+```json
+{
+    "_id": {
+        "$oid": "619c5b5375777fbf467a55e8"
+    },
+    "userId": "ef68f598-1f9b-43ee-be93-c229c21b03f8",
+    "userName": "aaab",
+    "password": "$2a$10$94Lw6j0IIWRnHhex/QurfefBou/naaIbhdkEFV2G4.HyUg8XXVbWu",
+    "nickName": "AAABB",
+    "email": "aaab@gmail.com",
+    "userPicture": null
+}
+```
 
---This table is connecting Articles table and ArticleCate table which is many to many relationship.
-CREATE TABLE Belong (
-belongId INTEGER PRIMARY KEY AUTOINCREMENT
-NOT NULL
-UNIQUE,
-cateId INTEGER REFERENCES ArticleCate (cateId)
-NOT NULL,
-articleId INTEGER REFERENCES Articles (articleId)
-NOT NULL
-);
+### Table 3: category(category only table)
 
---This table is for saving user information.
-CREATE TABLE Users (
-userId INTEGER PRIMARY KEY ON CONFLICT ROLLBACK AUTOINCREMENT
-NOT NULL
-UNIQUE,
-password TEXT (225) NOT NULL,
-userName TEXT UNIQUE
-NOT NULL,
-nickName TEXT,
-email TEXT,
-userPicture TEXT
-);
+"cateId":  Category id.
 
+"name":  Category name.
+
+"alias":  Another way of saying category.
+
+"isDelete": Whether the category is deleted.
+
+"userId": User Id.
+
+**Example:**
+
+```json
+{
+    "cateId": "3",
+    "name": "chemistry",
+    "alias": "huaxue",
+    "isDelete": false,
+    "userId": "3"
+}
+```
+
+### Table 4: articles(main table)
+
+The main table formed by combining the above three tables.
+
+```json
+{
+    "articleId": "1",
+    "title": "5 Tips to Get a Job as a Java Fresher",
+    "content": "Java is one of the most robust programming languages which is currently used for development in 3 billion devices. This language offers amazing features like platform independence, object-oriented programming, enhanced security features, automatic garbage collection, and many more. The latest technological trends of 2021 completely manifest that Java will continue to behold its dominance in the upcoming future. The rise of Java is linked with the growth of job opportunities for",
+    "coverImg": null,
+    "pubDate": "02/25/2019",
+    "status": "published",
+    "isDelete": false,
+    "user": {
+      "userId": "1",
+      "userName": "aaa",
+      "password": "123456",
+      "nickName": "AAA",
+      "email": "aaa@gmail.com",
+      "userPicture": null
+    },
+    "category": [
+      {
+        "cateId": "1",
+        "name": "computer",
+        "alias": "cs",
+        "isDelete": "false",
+        "user": {
+          "userId": "1",
+          "userName": "aaa",
+          "password": "123456",
+          "nickName": "AAA",
+          "email": "aaa@gmail.com",
+          "userPicture": null
+        }
+      }
+    ]
+  }
 ```
 
 ### Successful create table
-![s1](./picture/s1.png)
-![s2](./picture/s2.png)
+![3](./picture/3.png)
+![4](./picture/4.jpg)
 
-### Import data into database
-![i1](./picture/i1.png)
+![5](./picture/5.jpg)
+
+![6](./picture/6.png)
+
+
+
 ### Testing table is work
 
-```sqlite
---Check all articles in database.
-select Articles.title from ArticleCate, Articles, Belong, Users
-where Users.userId = ArticleCate.userId
-and ArticleCate.cateId = Belong.cateId
-and Articles.articleId = Belong.articleId;
+```javascript
+//1. Get all articles whose status are draft.
+db.getCollection("articles").aggregate([{ $match: { status: "draft" } },])
 
---Select Articles which belong to study category.
-select Articles.articleId,Articles.title,ArticleCate.name 
-from Articles, Belong, ArticleCate
-where Articles.articleId = Belong.articleId
-and Belong.cateId = ArticleCate.cateId
-and ArticleCate.name = 'study';
+//2. Get three articles whose status are published.
+db.getCollection("articles").aggregate([{ $match: { status: "published" } }, {$limit: 3}])
 
---Find out total number of articles and category name of each category.
-select ArticleCate.name, count(ArticleCate.name) as numberOfArticle 
-from Articles, Belong, ArticleCate
-where Articles.articleId = Belong.articleId
-and Belong.cateId = ArticleCate.cateId
-group by ArticleCate.name
-having numberOfArticle > 1;
+//3. Count the number of articles for the user with userId=1.
+db.getCollection("articles").find({ "user.userId": "1" }).count()
 
---Find total of articles.
-select count(*) from (select ArticleCate.name from Articles, Belong, ArticleCate
-where Articles.articleId = Belong.articleId
-and Belong.cateId = ArticleCate.cateId);
+//4. Set the "isDelete" of the article whose articleID=1 to true.
+db.getCollection("articles").aggregate([{$match: {articleId: "1"}}, {$set: {isDelete: true}}])
 
---Find out total number of articles and category name of each category and show information whether the number is greater than 10 or not.
-select ArticleCate.name, numberOfArticle,
-case 
-    when numberOfArticle > 10 then 'The number Of Articles is greater than 10'
-    when numberOfArticle = 10 then 'The number Of Articles  is 10'
-    else 'The number Of Articles  is under 10'
-end as numberOfArticleInfo from 
-(select ArticleCate.name, count(ArticleCate.name) 
-as numberOfArticle from Articles, Belong, ArticleCate
-where Articles.articleId = Belong.articleId
-and Belong.cateId = ArticleCate.cateId
-group by ArticleCate.name
-having numberOfArticle > 1);
+//5. Find articles which are written by the user(userId=1) and belong to the computer category.
+db.getCollection("articles").find(
+    {
+        $and: [
+            { "user.userId": "1" }, { "category.name": "computer" }
+        ]
+    }
+)
 ```
-![1](./picture/1.png)
-![2](./picture/2.png)
-![3](./picture/3.png)
-![4](./picture/4.png)
-![5](./picture/5.png)
+
 
 ## How to Start
+
+Download and install [MongoDB](https://docs.mongodb.com/manual/installation/) follow this instruction
+
+Import the file using mongoimport
+
+```
+mongoimport --db articleSystem --collection category --file article.json --jsonArray   
+mongoimport --db articleSystem --collection category --file articles.json --jsonArray   
+mongoimport --db articleSystem --collection category --file category.json --jsonArray   
+mongoimport --db articleSystem --collection category --file user.json --jsonArray   
+```
 
 Download nodejs and install
 
