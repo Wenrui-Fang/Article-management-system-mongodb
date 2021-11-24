@@ -162,33 +162,33 @@ The main table formed by combining the above three tables.
 
 ```json
 {
-    "articleId": "1",
-    "title": "5 Tips to Get a Job as a Java Fresher",
-    "content": "Java is one of the most robust programming languages which is currently used for development in 3 billion devices. This language offers amazing features like platform independence, object-oriented programming, enhanced security features, automatic garbage collection, and many more. The latest technological trends of 2021 completely manifest that Java will continue to behold its dominance in the upcoming future. The rise of Java is linked with the growth of job opportunities for",
+    "articleId": "4",
+    "title": "Wordpedia",
+    "content": "Narrowleaf Clubmoss",
     "coverImg": null,
-    "pubDate": "02/25/2019",
+    "pubDate": "09/10/2002",
     "status": "published",
     "isDelete": false,
     "user": {
-      "userId": "1",
-      "userName": "aaa",
+      "userId": "2",
+      "userName": "bbb",
       "password": "123456",
-      "nickName": "AAA",
-      "email": "aaa@gmail.com",
+      "nickName": "BBB",
+      "email": "bbb@gmail.com",
       "userPicture": null
     },
     "category": [
       {
-        "cateId": "1",
-        "name": "computer",
-        "alias": "cs",
+        "cateId": "2",
+        "name": "mechanics",
+        "alias": "me",
         "isDelete": "false",
         "user": {
-          "userId": "1",
-          "userName": "aaa",
+          "userId": "2",
+          "userName": "bbb",
           "password": "123456",
-          "nickName": "AAA",
-          "email": "aaa@gmail.com",
+          "nickName": "BBB",
+          "email": "bbb@gmail.com",
           "userPicture": null
         }
       }
