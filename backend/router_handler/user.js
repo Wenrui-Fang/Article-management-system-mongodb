@@ -55,6 +55,7 @@ const userinfo = req.body;
 // Registered processing function
 exports.login = (req, res) => {
     const userinfo = req.body
+    console.log(req.body)
     mongodb.connect(url, async function(err, client) {
         if(err) throw err;
         var db = await client.db("articleSystem");

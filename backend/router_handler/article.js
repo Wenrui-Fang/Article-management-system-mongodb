@@ -60,6 +60,10 @@ exports.getArticleLists = (req, res) => {
         .find(query1)
         .toArray(function (err, results) {
           if (err) throw err;
+          for(let i = 0; i < results.length; i++){
+            let a = results[i].category[0].name
+            results[i].category = a;
+          }
           res.send({
             status: 0,
             message: "Get the article list successfully!",

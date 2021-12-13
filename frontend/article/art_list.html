@@ -25,7 +25,9 @@
             </select>
           </div>
           <div class="layui-form-item layui-inline">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">Select</button>
+            <button class="layui-btn" lay-submit lay-filter="formDemo">
+              Select
+            </button>
           </div>
         </form>
         <!-- 列表区域 -->
@@ -58,12 +60,18 @@
       {{each data}}
       <tr>
         <td>{{$value.title}}</td>
-        <td>{{$value.name}}</td>
+        <td>{{$value.category}}</td>
         <td>{{$value.pubDate|dataFormat}}</td>
         <td>{{$value.status}}</td>
         <td>
           <button type="button" class="layui-btn layui-btn-xs">edit</button>
-          <button type="button" class="layui-btn layui-btn-danger layui-btn-xs btn-delete" data-id="{{$value.articleId}}">delete</button>
+          <button
+            type="button"
+            class="layui-btn layui-btn-danger layui-btn-xs btn-delete"
+            data-id="{{$value.articleId}}"
+          >
+            delete
+          </button>
         </td>
       </tr>
       {{/each}}

@@ -45,7 +45,7 @@ $(function () {
                 if (res.status !== 0) {
                     return layer.msg('Failed to get the article list!')
                 }
-                // 使用模板引擎渲染页面的数据
+                console.log(res)
                 var htmlStr = template('tpl-table', res)
                 $('tbody').html(htmlStr)
                 // 调用渲染分页的方法
