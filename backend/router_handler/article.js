@@ -36,7 +36,7 @@ exports.addArticle = (req, res) => {
       status: articleInfo.state,
       isDelete: false,
       userId: articleInfo.userId,
-      catedId: articleInfo.catedId,
+      cateId: articleInfo.cateId,
     };
     // console.log(req);
     dbo.collection("article").insertOne(document, function (err, results) {
