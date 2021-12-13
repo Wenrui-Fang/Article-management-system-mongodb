@@ -52,16 +52,24 @@ exports.getArticleLists = (req, res) => {
     if (err) throw err;
     var dbo = db.db("articleSystem");
     if (req.query.cate_id === "") {
-      var query1 = {
-        isDelete: false,
-      };
+      var operation = [
+        {
+          $lookup: {
+            from: "category",
+            localField: "cateId",
+            foreignField: "cateId",
+            as: "category",
+          },
+        },
+        { $match: { isDelete: false } },
+      ];
       dbo
         .collection("article")
-        .find(query1)
+        .aggregate(operation)
         .toArray(function (err, results) {
           if (err) throw err;
-          for(let i = 0; i < results.length; i++){
-            let a = results[i].category[0].name
+          for (let i = 0; i < results.length; i++) {
+            let a = results[i].category[0].name;
             results[i].category = a;
           }
           res.send({
@@ -69,26 +77,34 @@ exports.getArticleLists = (req, res) => {
             message: "Get the article list successfully!",
             data: results,
           });
-        //   console.log(results);
           db.close();
         });
     } else {
-      var query2 = {
-        isDelete: false,
-        cateId: req.query.cate_id,
-      };
+      var operation = [
+        {
+          $lookup: {
+            from: "category",
+            localField: "cateId",
+            foreignField: "cateId",
+            as: "category",
+          },
+        },
+        { $match: { isDelete: false, cateId: req.query.cate_id} },
+      ];
       dbo
         .collection("article")
-        .find(query2)
+        .aggregate(operation)
         .toArray(function (err, results) {
           if (err) throw err;
+          for (let i = 0; i < results.length; i++) {
+            let a = results[i].category[0].name;
+            results[i].category = a;
+          }
           res.send({
             status: 0,
             message: "Get the article list successfully!",
             data: results,
           });
-        //   console.log(results);
-
           db.close();
         });
     }
@@ -102,12 +118,10 @@ exports.deleteArticleById = (req, res) => {
     var dbo = db.db("articleSystem");
     var query = { articleId: req.params.id };
     var update = { $set: { isDelete: true } };
-    dbo
-      .collection("article")
-      .updateOne(query, update, function (err, results) {
-        if (err) throw err;
-        res.cc('The article was deleted successfully!', 0)
-        db.close();
-      });
+    dbo.collection("article").updateOne(query, update, function (err, results) {
+      if (err) throw err;
+      res.cc("The article was deleted successfully!", 0);
+      db.close();
+    });
   });
 };
